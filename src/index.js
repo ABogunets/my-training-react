@@ -19,13 +19,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const element = React.createElement('div', { a: 5, b: 10, children: 'Привет мир' });
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-
-// ReactDOM.render(element, document.querySelector('#root'));
-
-const jsxElement = <div>Hello world</div>;
-console.log('jsxElement :>> ', jsxElement);
-
-ReactDOM.createRoot(document.getElementById("root")).render(jsxElement);
+root.render(<App/>);

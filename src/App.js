@@ -28,14 +28,14 @@
 
 // * from Repeta lecture
 import paintings from './paintings.json';
-import Painting from './components/Painting';
-
-console.log('paintings[0].url :>> ', paintings[0].url);
+// import Painting from './components/Painting';
+import PaintingList from './components/PaintingList';
 
 export default function App() {
   return (
     <div>
-      <Painting
+      <PaintingList items={paintings} />
+      {/* <Painting
         imageUrl={paintings[0].url}
         title={paintings[0].title}
         author={paintings[0].author.tag}
@@ -55,7 +55,7 @@ export default function App() {
         author={paintings[2].author.tag}
         profileUrl={paintings[2].author.url}
         price={paintings[2].price}
-      />
+      /> */}
     </div>
   );
 }

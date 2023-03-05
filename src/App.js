@@ -1,61 +1,39 @@
 
-// * Text below was by default after react package install
-// import logo from './logo.svg';
-// import './App.css';
+// * from Repeta lecture1
+// import paintings from './paintings.json';
+// // import Painting from './components/Painting';
+// import PaintingList from './components/PaintingList';
 
-// function App() {
+// export default function App() {
 //   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
+//     <div>
+//       <PaintingList items={paintings} />
 //     </div>
 //   );
 // }
 
-// export default App;
-
-// * from Repeta lecture
-import paintings from './paintings.json';
-// import Painting from './components/Painting';
-import PaintingList from './components/PaintingList';
-
-export default function App() {
+// * Lesson2-styles Example from lecture notes
+import "./index.css";
+import { Alert } from "./components/Alert";
+const App = () => {
   return (
-    <div>
-      <PaintingList items={paintings} />
-      {/* <Painting
-        imageUrl={paintings[0].url}
-        title={paintings[0].title}
-        author={paintings[0].author.tag}
-        profileUrl={paintings[0].author.url}
-        price={paintings[0].price}
-      />
-        <Painting
-        imageUrl={paintings[1].url}
-        title={paintings[1].title}
-        author={paintings[1].author.tag}
-        profileUrl={paintings[1].author.url}
-        price={paintings[1].price}
-      />
-        <Painting
-        imageUrl={paintings[2].url}
-        title={paintings[2].title}
-        author={paintings[2].author.tag}
-        profileUrl={paintings[2].author.url}
-        price={paintings[2].price}
-      /> */}
-    </div>
+    <>
+      <Alert variant="info">
+        Would you like to browse our recommended products?
+      </Alert>
+      <Alert variant="error" elevated>
+        There was an error during your last transaction
+      </Alert>
+      <Alert variant="success">
+        Payment received, thank you for your purchase
+      </Alert>
+      <Alert variant="warning" outlined>
+        Please update your profile contact information
+      </Alert>
+    </>
   );
-}
+};
+
+export default App;
+
+

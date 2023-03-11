@@ -1,39 +1,23 @@
+import React, { Component } from "react";
+// * from Lecture notes
 
-// * from Repeta lecture1
-// import paintings from './paintings.json';
-// // import Painting from './components/Painting';
-// import PaintingList from './components/PaintingList';
+export class App extends Component {
+  state = { isOpen: false };
 
-// export default function App() {
-//   return (
-//     <div>
-//       <PaintingList items={paintings} />
-//     </div>
-//   );
-// }
+  show = () => this.setState({ isOpen: true });
 
-// * Lesson2-styles Example from lecture notes
-import "./index.css";
-import { Alert } from "./components/Alert";
-const App = () => {
-  return (
-    <>
-      <Alert variant="info">
-        Would you like to browse our recommended products?
-      </Alert>
-      <Alert variant="error" elevated>
-        There was an error during your last transaction
-      </Alert>
-      <Alert variant="success">
-        Payment received, thank you for your purchase
-      </Alert>
-      <Alert variant="warning" outlined>
-        Please update your profile contact information
-      </Alert>
-    </>
-  );
-};
+  hide = () => this.setState({ isOpen: false });
 
-export default App;
+  render() {
+    const { isOpen } = this.state;
+    const { children } = this.props;
 
-
+    return (
+      <>
+        <button onClick={this.show}>Show</button>
+        <button onClick={this.hide}>Hide</button>
+        {isOpen && children}
+      </>
+    );
+  }
+}

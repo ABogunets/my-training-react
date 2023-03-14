@@ -1,23 +1,70 @@
-import React, { Component } from "react";
-// * from Lecture notes
+import React, { Component } from 'react';
+// import Counter from './components/Counter';
+// import Dropdown from './components/Dropdown';
+// import ColorPicker from './components/ColorPicker';
+import TodoList from './components/TodoList';
+import initialTodos from './todos.json';
 
-export class App extends Component {
-  state = { isOpen: false };
+// const colorPickerOptions = [
+//   { label: 'red', color: '#F44336' },
+//   { label: 'green', color: '#4CAF50' },
+//   { label: 'blue', color: '#2196F3' },
+//   { label: 'grey', color: '#607D8B' },
+//   { label: 'pink', color: '#E91E63' },
+//   { label: 'indigo', color: '#3F51B5' },
+// ];
 
-  show = () => this.setState({ isOpen: true });
+class App extends Component {
+  state = {
+    todos: initialTodos,
+  };
 
-  hide = () => this.setState({ isOpen: false });
+  deleteTodo = todoId => {
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(todo => todo.id !== todoId),
+    }));
+  };
 
   render() {
-    const { isOpen } = this.state;
-    const { children } = this.props;
+    const { todos } = this.state;
+
+    const totalTodoCount = todos.length;
+    const completedTodoCount = todos.reduce(
+      (total, todo) => (todo.completed ? total + 1 : total),
+      0,
+    );
 
     return (
       <>
-        <button onClick={this.show}>Show</button>
-        <button onClick={this.hide}>Hide</button>
-        {isOpen && children}
+        <h1>Состояние компонента</h1>
+
+        <div>
+          <p>Общее кол-во: {totalTodoCount}</p>
+          <p>Кол-во выполненных: {completedTodoCount}</p>
+        </div>
+
+        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
       </>
     );
   }
 }
+
+// const App = () => {
+//   return (
+//           <>
+//         <h1>Состояние компонента</h1>
+
+//         {/* <Counter initialValue={10} /> */}
+//         {/* <Dropdown /> */}
+//         {/* <ColorPicker options={colorPickerOptions} /> */}
+
+//       </>
+//   )
+// }
+  
+
+
+
+
+
+export default App;
